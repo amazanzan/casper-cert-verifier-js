@@ -5,6 +5,8 @@ export enum SupportedChains {
   Ethmain = 'ethmain',
   Ethropst = 'ethropst',
   Ethrinkeby = 'ethrinkeby',
+  Csprmain = 'csprmain',
+  Csprtest = 'csprtest',
   Mocknet = 'mocknet',
   Regtest = 'regtest',
   Testnet = 'testnet'
@@ -59,6 +61,26 @@ const BLOCKCHAINS: {[chain in SupportedChains]: IBlockchainObject} = {
     transactionTemplates: {
       full: `https://rinkeby.etherscan.io/tx/${TRANSACTION_ID_PLACEHOLDER}`,
       raw: `https://rinkeby.etherscan.io/getRawTx?tx=${TRANSACTION_ID_PLACEHOLDER}`
+    }
+  },
+  [SupportedChains.Csprmain]: {
+    code: SupportedChains.Csprmain,
+    name: 'Casper',
+    // prefixes: ['0x'],
+    signatureValue: 'casperMainnet',
+    transactionTemplates: {
+      full: `https://cspr.live/deploy/${TRANSACTION_ID_PLACEHOLDER}`,
+      raw: `https://cspr.live/deploy/${TRANSACTION_ID_PLACEHOLDER}`
+    }
+  },
+  [SupportedChains.Csprtest]: {
+    code: SupportedChains.Csprtest,
+    name: 'Casper Testnet',
+    // prefixes: ['0x'],
+    signatureValue: 'casperTestnet',
+    transactionTemplates: {
+      full: `https://testnet.cspr.live/deploy/${TRANSACTION_ID_PLACEHOLDER}`,
+      raw: `https://testnet.cspr.live/deploy/${TRANSACTION_ID_PLACEHOLDER}`
     }
   },
   [SupportedChains.Mocknet]: {
